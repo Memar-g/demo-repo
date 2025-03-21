@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# demo-repo
+<<<<<<< 
 =======
 # My first github projects
 This is My first github projects.
