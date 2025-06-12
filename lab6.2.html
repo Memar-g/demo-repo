@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query & JavaScript Tasks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("green.jpg");
+            background-repeat:no repeat;
+            background-attachment:fixed;
+            background-position:center;
+            background-size:cover;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-color: lightcoral;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Programs</h1>
+    <div id="output"></div>
+    <script>
+        function displayResult(text) {
+            const outputDiv = document.getElementById("output");
+            const p = document.createElement("p");
+            p.textContent = text;
+            outputDiv.appendChild(p);
+        }
+
+        // 1. Compute the sum of two integers; if same, return triple the sum
+        function sumOrTriple(a, b) {
+            let result = (a === b) ? 3 * (a + b) : (a + b);
+            displayResult(`sumOrTriple(${a}, ${b}) = ${result}`);
+            return result;
+        }
+        sumOrTriple(5, 5);
+        sumOrTriple(4, 6);
+
+        // 2. Check if last digit of three positive integers is the same
+        function checkLastDigit(x, y, z) {
+            let result = (x % 10 === y % 10 && y % 10 === z % 10);
+            displayResult(`checkLastDigit(${x}, ${y}, ${z}) = ${result}`);
+            return result;
+        }
+        checkLastDigit(23, 33, 43);
+        checkLastDigit(14, 25, 36);
+
+        // 3. Find square if negative, else square root
+        function processNumber(num) {
+            let result = (num < 0) ? num * num : Math.sqrt(num);
+            displayResult(`processNumber(${num}) = ${result}`);
+            return result;
+        }
+        processNumber(-4);
+        processNumber(9);
+    </script>
+</body>
+</html>

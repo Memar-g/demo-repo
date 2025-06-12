@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form id="regform">
+        
+        <label for="name">Full Name <font color="red">*</font>  </span></label>
+        <input type="text"  id="name">
+
+        <br><br>
+
+        <label for="phone">Phone</label> <font color="red">*</font>
+        <input type="tel"  placeholder="123-324-2344-123" pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}-[1-9]{3}">
+
+        <br><br>
+
+        <label>Age</label> <font color="red">*</font>
+        <input type="number"  min="7" max="20" value="9" id="age">
+
+        <br><br>
+
+        <label>Your favorite color</label>
+        <input type="color" value="#7DDA58">
+
+        <br><br>
+
+        <label>Birthdate</label> <font color="red">*</font>
+        <input type="date" >
+
+        <br><br>
+
+        <label>Gender:</label><font color="red">*</font><br>
+        <input type="radio" id="ml" name="gen" > 
+        <label for="ml">Male</label><br>
+        <input type="radio" id="fl" name="gen" >
+        <label for="fl">Female</label>
+
+        <br><br>
+
+        <label for="sub">subscribe</label>
+        <input type="checkbox" id="sub">
+
+        <br><br>
+
+        <label for="password">Password:</label> <font color="red">*</font>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <label for="confirm-password">Confirm Password:</label> <font color="red">*</font>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <br><br>
+
+
+        <br><br>
+
+        Skills<br><br>
+            <pre style="font-size:14px">
+            <input type="checkbox" size="1500px" > HTML
+            <input type="checkbox" size="1500"> CSS
+            <input type="checkbox" size="1500"> Java Script
+            <input type="checkbox" size="1500"> HPP
+        </pre>
+
+        <br><br>
+
+        <label for="C">Country</label>
+        <select name="C" id="C"  multiple>
+            <option value="Ethiopia" selected>Ethiopia</option>
+            <option value="kenya" selected>kenia</option>
+            <option value="canada" >canada</option>
+            <option >USA</option>
+            <option value="South Africa">South aArica</option>
+        </select>
+
+        <br><br>
+
+        <label>Photo</label>
+        <input type="file" accept="lab2/jpg" name="photo">
+
+        <br><br>
+
+        <label>describe yourself</label><br>
+        <textarea type="comment" rows="5" cols="50" id="demo"></textarea>
+       
+        <br><br>
+        <button onclick="submitform()">Submit</button>
+        <button>reset</button>
+
+    </form>
+    <textarea type="comment" id="id" rows="10" cols="50"></textarea>
+    Follow Us On:<a href>
+             <u>Facebook</u>
+    </a> /   
+     <a href>
+        <u>Twitter</u>
+    </a>
+
+    <br><br>
+
+    <h4>Video Uploading</h4>
+        <video src="vid.mp4" controls autoplay muted width="200" height="400"></video>
+
+        <br><br>
+
+        <h4>Image uploading</h4>
+        <image src="s.jpg" width="200"></image>
+        <script>
+            
+            function submitform(){
+                const formdata=document.getElementById("regform").value;
+                if(formdata==""){
+                    alert("please fill all the fields");
+                    return;
+                }
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match.");
+                    return;
+                }
+                /*const name=document.getElemntById("name").value;
+                const phone=document.getElementById("phone").value;
+                const age=document.getElementbyId("age");
+
+                const result= {
+                    name:name,
+                    phone:phone,
+                    age:age
+                };
+
+                document.getElementById("id").value="NAme:"+result.name + "<br>"+ "phone:"+result.phone + "<br>" +"age:"+ result.age
+                */
+*                   const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const age = document.getElementById('age').value;
+                    const color = document.getElementById('color').value;
+
+    
+                    const result = `
+                    Full Name: ${name}
+                    Phone: ${phone}
+                    Age: ${age}
+                    Favorite Color: ${color}
+                    `
+                        .trim();    
+                           document.getElementById('id').value = result; 
+                        }
+        </script>
+
+</body>
+</html>

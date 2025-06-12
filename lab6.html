@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="regForm">
+    <label>Full Name <font color="red">*</font></label>
+    <input type="text" id="name" required>
+    <br><br>
+
+    <label>Phone <font color="red">*</font></label>
+    <input type="tel" id="phone" required placeholder="123-324-2344-123" pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}-[1-9]{3}">
+    <br><br>
+
+    <label>Age <font color="red">*</font></label>
+    <input type="number" id="age" required min="7" max="20" value="9">
+    <br><br>
+
+    <label>Your favorite color</label>
+    <input type="color" id="color" value="#7DDA58">
+    <br><br>
+
+    <label>Birthdate <font color="red">*</font></label>
+    <input type="date" id="birthdate" required>
+    <br><br>
+
+    <label>Gender: <font color="red">*</font></label><br>
+    <input type="radio" id="ml" name="gen" value="Male" required> 
+    <label for="ml">Male</label><br>
+    <input type="radio" id="fl" name="gen" value="Female"> 
+    <label for="fl">Female</label>
+    <br><br>
+
+    <label for="sub">Subscribe</label>
+    <input type="checkbox" id="sub">
+    <br><br>
+
+    <label for="password">Password: <font color="red">*</font></label>
+    <input type="password" id="password" required>
+    <br><br>
+
+    <label for="confirm-password">Confirm Password: <font color="red">*</font></label>
+    <input type="password" id="confirm-password" required>
+    <br><br>
+
+    Skills<br><br>
+    <input type="checkbox" class="skill" value="HTML" required> HTML
+    <input type="checkbox" class="skill" value="CSS"> CSS
+    <input type="checkbox" class="skill" value="JavaScript"> JavaScript
+    <input type="checkbox" class="skill" value="PHP"> PHP
+    <br><br>
+
+    <label for="C">Country</label>
+    <select name="C" id="C" multiple required>
+      <option value="Ethiopia">Ethiopia</option>
+      <option value="Kenya">Kenya</option>
+      <option value="Canada">Canada</option>
+      <option value="USA">USA</option>
+      <option value="South Africa">South Africa</option>
+    </select>
+    <br><br>
+
+    <label>Photo <font color="red">*</font></label>
+    <input type="file" accept="image/*" name="photo" id="photo" required>
+    <br><br>
+
+    <label>Describe yourself</label><br>
+    <textarea id="description" rows="5" cols="50" required></textarea>
+    <br><br>
+
+    <button type="button" onclick="handleSubmit()">Submit</button>
+    <button type="reset" onclick="handleReset()">Reset</button>
+  </form>
+
+  <br>
+  <textarea id="output" rows="10" cols="50" readonly></textarea>
+
+  <script>
+    function handleSubmit() {
+      const form = document.getElementById("regForm");
+
+      // Prevent submission if form is invalid
+      if (!form.checkValidity()) {
+        alert("Please fill all required fields correctly.");
+        return;
+      }
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const age = document.getElementById('age').value;
+      const color = document.getElementById('color').value;
+      const birthdate = document.getElementById('birthdate').value;
+      const gender = document.querySelector('input[name="gen"]:checked').value;
+      const subscribe = document.getElementById('sub').checked ? "Yes" : "No";
+      const skills = Array.from(document.querySelectorAll('.skill:checked')).map(cb => cb.value).join(', ');
+      const countries = Array.from(document.getElementById('C').selectedOptions).map(opt => opt.value).join(', ');
+      const description = document.getElementById('description').value;
+
+      const result = `
+Full Name: ${name}
+Phone: ${phone}
+Age: ${age}
+Favorite Color: ${color}
+Birthdate: ${birthdate}
+Gender: ${gender}
+Subscribed: ${subscribe}
+Password: ${password}
+Skills: ${skills}
+Country: ${countries}
+Description: ${description}
+      `.trim();
+
+      document.getElementById('output').value = result;
+    }
+
+    function handleReset() {
+      document.getElementById('output').value = '';
+    }
+  </script>
+</body>
+</html>
+
